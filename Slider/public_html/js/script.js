@@ -11,7 +11,6 @@ $(document).ready(function (){
    $.fn.abc = function(){
 
 		if(this.length == 0) return this;
-
 		// support mutltiple elements
 		if(this.length > 0){
                     $(this).find("li").addClass("slider_li");

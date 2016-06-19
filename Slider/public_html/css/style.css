@@ -26,3 +26,7 @@ img{
     display: block;
     transition: .7s;
 }
+.container{
+    margin:0 auto;
+    max-width:500px;
+}

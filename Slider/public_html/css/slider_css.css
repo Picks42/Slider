@@ -7,10 +7,49 @@ and open the template in the editor.
     Created on : Jun 18, 2016, 7:45:22 PM
     Author     : PRABHAKAR
 */
-
-.slider_li img {
-    max-width: 100%;
+.sliderM-parent{
+    width:100%;
+    position:relative;
 }
-.slider_li{
-    display: none;
+.sliderM-parent > *.item{
+    display:none;
+}
+.sliderM-parent > *.active{
+    display:inline-block;
+}
+.sliderM-parent img.sliderM-Image{
+    max-width:100%;
+    vertical-align:middle;
+}
+.sliderM-parent .sliderM-next{
+    width:35px;
+    height:35px;
+    cursor: pointer;
+    background: url(sliderMImages/next.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity:0.5;
+    position:absolute;
+    right:0;
+    top:50%;
+    transform: translateY(-50%);
+
+}
+.sliderM-parent .sliderM-prev{
+    width:35px;
+    height:35px;
+    cursor: pointer;
+    opacity:0.5;
+    background:url(sliderMImages/prev.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position:absolute;
+    left:0;
+    top:50%;
+    transform: translateY(-50%);
+}
+.sliderM-parent .sliderM-prev:hover,
+.sliderM-parent .sliderM-next:hover{
+    opacity:1;
+    transition: all 0.5s;
 }
