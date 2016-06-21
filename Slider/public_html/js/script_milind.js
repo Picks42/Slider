@@ -5,9 +5,23 @@
  */
 
 var $slider = $(".slider");
+var $prevButton = $('#prevButton');
+var $nextButton = $('#nextButton');
 
 $(document).ready(function () {
 
-    $slider.sliderM();
+    $slider.sliderM({
+        isAutomatic:true,
+        delayTime:3000
+    });
+    addClick();
 
 });
+function addClick(){
+    $prevButton.click(function(event){
+        $slider.data('sliderM').previous();
+    });
+    $nextButton.click(function(event){
+        $slider.data('sliderM').next();
+    });
+}
