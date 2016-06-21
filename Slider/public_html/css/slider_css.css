@@ -53,3 +53,9 @@ and open the template in the editor.
     opacity:1;
     transition: all 0.5s;
 }
+.slider_li img {
+    max-width: 100%;
+}
+.slider_li{
+    display: none;
+}
