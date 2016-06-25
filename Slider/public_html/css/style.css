@@ -11,25 +11,17 @@ body{
     margin: 0;
     padding: 0;
 }
-ul{
+img{
+    /*max-height: 300px;*/
+}
+.picksSlider{
     margin: 0;
-    padding: 0; 
+    padding: 0;
     list-style: none;
 }
-li{
-    display: inline-block;
+.picksSlider .item{
+    /*display: none;*/
 }
-img{
-    max-width: 350px;
-}
-.active{
-    display: block;
-    transition: .7s;
-}
-.container{
-    margin:0 auto;
-    max-width:500px;
-}
-.slider_li{
-    display: none;
+.picksSlider .item img{
+    width: 100%;
 }
