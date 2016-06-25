@@ -14,6 +14,9 @@ body{
 img{
     /*max-height: 300px;*/
 }
+.Slider_container{
+    position: relative;
+}
 .picksSlider{
     margin: 0;
     padding: 0;
@@ -24,4 +27,19 @@ img{
 }
 .picksSlider .item img{
     width: 100%;
+    
+}
+.Slider_container .px-prev, .Slider_container .px-next{
+  position: absolute;
+top:50%;
+transform: translateY(-50%);
+-webkit-transform: translateY(-50%);
+-moz-transform: translateY(-50%);
+    
+}
+.Slider_container .px-next{
+    right:0;
+}
+.Slider_container .px-prev{
+    left:0;
 }
