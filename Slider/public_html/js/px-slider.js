@@ -20,6 +20,8 @@ $(document).ready(function () {
         var parent;
         var btn_next;
         var btn_prev;
+        var pager_item;
+        var pager_block;
         var init = function () {
             $(that).addClass("picksSlider").attr("data-current", "slide-0");
 
@@ -59,14 +61,26 @@ $(document).ready(function () {
             return current;
         };
 
-        var show = function () {
+        var show = function (pager_param) {
+            var active;
             $(that).find(".item").fadeOut(500);
-            var active = current_slide();
+            $(pager_item).removeClass("active");
+
+            if (pager_param == null || pager_param == "")
+            {
+                active = current_slide();
+            } else {
+                active = pager_param;
+            }
+
             $(that).find("." + active).delay(1000).fadeIn("slow");
+            $(parent).find("[data-item=" + active + "]").addClass("active");
             setTimeout(function () {
                 $(btn_next).attr("disabled", false);
                 $(btn_prev).attr("disabled", false);
+                $(pager_item).bind("click");
             }, 1200);
+
 
         };
         var next = function () {
@@ -103,9 +117,24 @@ $(document).ready(function () {
 
             }
         };
+        var pager = function () {
+            var i;
+            for (i = 1; i <= count; i++) {
+                $(parent).append("<a class='pager'></a>");
+                pager_item = $(parent).find(".pager");
+            }
+            $(pager_item).wrapAll("<div class='px-pager'></div>");
+            pager_block = $(parent).find(".px-pager");
+            $.each(pager_item, function (index, item) {
+                $(item).attr("data-item", 'slide-' + index);
+            });
+        };
+
+
 
         init();
         min_height();
+        pager();
         buttons();
         show();
         $(btn_next).click(function () {
@@ -116,8 +145,13 @@ $(document).ready(function () {
             $(this).attr("disabled", true);
             prev();
         });
+        $(pager_item).click(function (e) {
+            var result = $(this).attr("data-item");
+            $(pager_item).unbind("click");
+            show(result);
+        });
 
 
     };
-    
+
 });

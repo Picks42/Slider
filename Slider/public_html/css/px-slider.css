@@ -64,3 +64,29 @@ transform: translateY(-50%);
 .px-prev button:focus, .px-next button:focus {
     outline:0;
 }
+.px-pager .pager{
+    height: 15px;
+    width: 15px;
+    border-radius: 100%;
+    background-color: #eee;
+    display: inline-block;
+    margin: 0 4px;
+}
+.px-pager .pager.active{
+    background-color: #4CAF50;
+}
+.px-pager .pager:first-of-type{
+    margin-left: 0;
+}
+.px-pager .pager:last-of-type{
+    margin-right: 0;
+}
+.px-pager{
+        text-align: center;
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform:  translateX(-50%);
+}
