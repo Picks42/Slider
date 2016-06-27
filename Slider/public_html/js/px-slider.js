@@ -55,6 +55,7 @@ $(document).ready(function () {
             $(parent).find('.px-prev').html("<button>Previous</button>");
             btn_next = $(parent).find(".px-next button");
             btn_prev = $(parent).find(".px-prev button");
+            
         };
         var current_slide = function () {
             var current = $(that).attr("data-current");
@@ -63,7 +64,7 @@ $(document).ready(function () {
 
         var show = function (pager_param) {
             var active;
-            $(that).find(".item").fadeOut(500);
+            child.fadeOut().promise().done(function (){
             $(pager_item).removeClass("active");
 
             if (pager_param == null || pager_param == "")
@@ -72,16 +73,14 @@ $(document).ready(function () {
             } else {
                 active = pager_param;
             }
-
-            $(that).find("." + active).delay(1000).fadeIn("slow");
+            $(that).find("." + active).fadeIn("slow");
             $(parent).find("[data-item=" + active + "]").addClass("active");
-            setTimeout(function () {
                 $(btn_next).attr("disabled", false);
                 $(btn_prev).attr("disabled", false);
-                $(pager_item).bind("click");
-            }, 1200);
-
-
+                $(pager_item).click(function (){
+                     pager_function(this);
+                });
+            });
         };
         var next = function () {
             var current = current_slide();
@@ -129,7 +128,12 @@ $(document).ready(function () {
                 $(item).attr("data-item", 'slide-' + index);
             });
         };
-
+var pager_function=function (x){
+    
+      var result = $(x).attr("data-item");
+            $(pager_item).unbind("click");
+            show(result);
+};
 
 
         init();
@@ -145,10 +149,8 @@ $(document).ready(function () {
             $(this).attr("disabled", true);
             prev();
         });
-        $(pager_item).click(function (e) {
-            var result = $(this).attr("data-item");
-            $(pager_item).unbind("click");
-            show(result);
+        $(pager_item).click(function () {
+            pager_function(this);
         });
 
 
