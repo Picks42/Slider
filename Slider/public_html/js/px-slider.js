@@ -64,7 +64,8 @@ $(document).ready(function () {
 
         var show = function (pager_param) {
             var active;
-            child.fadeOut().promise().done(function (){
+            child.fadeOut();
+        
             $(pager_item).removeClass("active");
 
             if (pager_param == null || pager_param == "")
@@ -73,14 +74,14 @@ $(document).ready(function () {
             } else {
                 active = pager_param;
             }
-            $(that).find("." + active).fadeIn("slow");
+            $(that).find("." + active).fadeIn();
             $(parent).find("[data-item=" + active + "]").addClass("active");
-                $(btn_next).attr("disabled", false);
-                $(btn_prev).attr("disabled", false);
+            
                 $(pager_item).click(function (){
                      pager_function(this);
                 });
-            });
+            
+
         };
         var next = function () {
             var current = current_slide();
@@ -141,12 +142,12 @@ var pager_function=function (x){
         pager();
         buttons();
         show();
-        $(btn_next).click(function () {
-            $(this).attr("disabled", true);
+        $(btn_next).stop().click(function () {
+           
             next();
         });
-        $(btn_prev).click(function () {
-            $(this).attr("disabled", true);
+        $(btn_prev).stop().click(function () {
+            
             prev();
         });
         $(pager_item).click(function () {
