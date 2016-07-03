@@ -76,12 +76,6 @@ $(document).ready(function () {
             }
             $(that).find("." + active).fadeIn();
             $(parent).find("[data-item=" + active + "]").addClass("active");
-            
-                $(pager_item).click(function (){
-                     pager_function(this);
-                });
-            
-
         };
         var next = function () {
             var current = current_slide();
@@ -132,7 +126,7 @@ $(document).ready(function () {
 var pager_function=function (x){
     
       var result = $(x).attr("data-item");
-            $(pager_item).unbind("click");
+           
             show(result);
 };
 
