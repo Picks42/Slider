@@ -11,15 +11,13 @@
             isAutomatic: false,
             delayTime: 2000,
             animationDuration: 1000,
-            entranceClass: "bounceIn",
-            exitClass: "bounceOut",
             nextImageCallBack: function () {},
             prevImageCallBack: function () {}
         };
-
         var that = element;
         var total_child = $(that).children().length;
-        that.settings = {}
+        var child = $(that).children();
+        that.settings = {};
 
         var $element = $(element),
                 element = element;
@@ -81,23 +79,9 @@
             }
             return "#sliderM-" + next_No;
         };
-        var animateCSS = function (element, animationName, callback) {
-            var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-            $(element).addClass('animated ' + animationName).one(animationEnd, function () {
-                $(element).removeClass('animated ' + animationName);
-                if (typeof callback === "function") {
-                    callback();
-                }
-            });
-        };
         var changeImage = function (current, next) {
-            animateCSS(current, that.settings.exitClass, function () {
-                $(current).removeClass("active");
-                $(next).addClass('active');
-                animateCSS(next, that.settings.entranceClass, function () {
-
-                });
-            });
+            $(current).removeClass("active");
+            $(next).addClass('active');
         };
         var getPreviousImage = function () {
             var current_id = getCurrentId();
@@ -129,6 +113,22 @@
                 getNextImage();
             }
         };
+        var min_height = function () {
+            $(that).wrap("<div class='Slider_container'></div>");
+
+            var min = 0;
+            var current;
+            $.each(child, function () {
+
+                current = $(this).height();
+                if (min < current)
+                {
+                    min = current;
+                }
+            });
+            min = parseInt(min) + 15;
+            $(that).parent().css("min-height", min);
+        };
         return that.init();
 
     };
@@ -136,7 +136,7 @@
     $.fn.sliderM = function (options) {
 
         return this.each(function () {
-            if (undefined == $(this).data('sliderM')) {
+            if (typeof $(this).data('sliderM') ===  "undefined") {
                 var that = new $.sliderM(this, options);
                 $(this).data('sliderM', that);
             }

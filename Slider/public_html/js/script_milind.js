@@ -9,9 +9,8 @@ var $prevButton = $('#prevButton');
 var $nextButton = $('#nextButton');
 
 $(document).ready(function () {
-
     $slider.sliderM({
-        isAutomatic:true,
+        isAutomatic:false,
         delayTime:3000
     });
     addClick();

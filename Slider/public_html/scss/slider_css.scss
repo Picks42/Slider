@@ -1,0 +1,68 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 27 Jul, 2016, 6:50:56 PM
+    Author     : lucent
+*/
+.sliderM-parent {
+  width: 100%;
+  position: relative;
+  > * {
+    &.item {
+      display: none;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    &.active {
+      display: block;
+    }
+  }
+  img.sliderM-Image {
+    max-width: 100%;
+  }
+  .sliderM-next {
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    background: url(sliderMImages/next.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.5;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .sliderM-prev {
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    opacity: 0.5;
+    background: url(sliderMImages/prev.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    &:hover {
+      opacity: 1;
+      transition: all 0.5s;
+    }
+  }
+  .sliderM-next:hover {
+    opacity: 1;
+    transition: all 0.5s;
+  }
+}
+
+.slider_li {
+  img {
+    max-width: 100%;
+  }
+  display: none;
+}
