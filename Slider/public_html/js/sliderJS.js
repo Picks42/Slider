@@ -134,7 +134,6 @@
     };
 
     $.fn.sliderM = function (options) {
-
         return this.each(function () {
             if (typeof $(this).data('sliderM') ===  "undefined") {
                 var that = new $.sliderM(this, options);
